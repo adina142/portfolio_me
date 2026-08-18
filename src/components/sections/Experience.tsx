@@ -1,70 +1,70 @@
+"use client"
+
 import { experienceData } from "@/data/experience"
-import { Badge } from "@/components/ui/badge"
-import { personalData } from "@/data/personal"
+import { Briefcase, Calendar } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function Experience() {
   return (
-    <div className="space-y-12">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Experience</h2>
-        <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-      </div>
+    <section id="experience" className="py-24 bg-background border-t border-border/50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-foreground">Experience</h2>
+          <div className="h-1 w-20 bg-primary mt-4 rounded-full"></div>
+        </div>
 
-      <div className="max-w-3xl mx-auto space-y-8">
-        {experienceData.map((item, index) => (
-          <div key={index} className="relative pl-8 md:pl-0">
-            <div className="md:grid md:grid-cols-5 md:gap-8 items-start">
-              <div className="md:col-span-1 md:text-right mb-2 md:mb-0 pt-1">
-                <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap">
-                  {item.period}
-                </span>
-              </div>
-              
-              <div className="md:col-span-4 relative">
-                {/* Timeline dot */}
-                <div className="absolute -left-[39px] md:-left-5 top-2 w-3 h-3 rounded-full bg-primary ring-4 ring-background" />
-                {/* Timeline line */}
-                {index !== experienceData.length - 1 && (
-                  <div className="absolute -left-[34px] md:-left-[15px] top-5 bottom-[-40px] w-0.5 bg-border" />
-                )}
-                
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-xl font-bold">{item.role}</h3>
-                    <p className="text-lg text-primary/80 font-medium">{item.company}</p>
+        <div className="max-w-4xl mx-auto">
+          <div className="relative border-l border-border ml-3 md:ml-6 space-y-12 pb-4">
+            {experienceData.map((exp, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative pl-8 md:pl-12"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute -left-4 top-1 w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center shadow-sm">
+                  <Briefcase className="w-3.5 h-3.5 text-primary" />
+                </div>
+
+                <div className="bg-card border border-border p-6 rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
+                      <p className="text-primary font-medium">{exp.company}</p>
+                    </div>
+                    <div className="flex items-center text-sm font-mono text-muted-foreground bg-secondary px-3 py-1.5 rounded-md w-fit">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      {exp.period}
+                    </div>
                   </div>
                   
-                  <ul className="space-y-2 text-muted-foreground list-disc pl-4 marker:text-muted-foreground/50">
-                    {item.responsibilities.map((resp, i) => (
-                      <li key={i}>{resp}</li>
+                  <div className="text-muted-foreground leading-relaxed mb-6 space-y-2">
+                    {exp.responsibilities.map((resp, i) => (
+                      <p key={i} className="flex items-start">
+                        <span className="text-primary mr-2">•</span> {resp}
+                      </p>
                     ))}
-                  </ul>
-                  
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {item.badges.map((badge) => (
-                      <Badge key={badge} variant="outline" className="font-mono text-xs">
-                        {badge}
-                      </Badge>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.badges.map((tech) => (
+                      <span 
+                        key={tech} 
+                        className="px-2.5 py-1 text-xs font-medium bg-secondary text-secondary-foreground border border-border rounded"
+                      >
+                        {tech}
+                      </span>
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      <div className="pt-16 max-w-3xl mx-auto">
-        <h3 className="text-2xl font-bold tracking-tight mb-8">Certifications & Achievements</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {personalData.certifications.map((cert, index) => (
-            <div key={index} className="p-4 rounded-lg border bg-card/30">
-              <h4 className="font-semibold">{cert.title}</h4>
-              <p className="text-sm text-muted-foreground mt-1">{cert.organization}</p>
-            </div>
-          ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

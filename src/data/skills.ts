@@ -1,8 +1,19 @@
-export const skillsData = {
-  languages: ["Python", "Java", "C++", "JavaScript", "TypeScript"],
-  frontend: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Responsive UI"],
-  backend: ["Node.js", "Express.js", "MongoDB", "Firebase", "REST APIs"],
-  ai: ["Computer Vision", "YOLOv8", "PyTorch", "XGBoost", "Random Forest", "Kalman Filtering", "AI/ML Data Annotation"],
-  tools: ["Git", "GitHub", "CI/CD Pipelines", "Data Preprocessing", "Model Evaluation"],
-  apis: ["Gemini API", "Google Maps API"]
+export type SkillCategory = "Machine Learning" | "Computer Vision" | "Full-Stack" | "Programming" | "Engineering";
+
+export const skillsData: Record<SkillCategory, string[]> = {
+  "Machine Learning": [
+    "Python", "PyTorch", "Scikit-learn", "XGBoost", "Random Forest", "Model Evaluation", "Data Preprocessing"
+  ],
+  "Computer Vision": [
+    "OpenCV", "YOLOv8", "Object Detection", "Image Processing", "Kalman Filtering"
+  ],
+  "Full-Stack": [
+    "React", "Next.js", "Node.js", "Express.js", "MongoDB", "REST APIs"
+  ],
+  "Programming": [
+    "Python", "C++", "Java", "JavaScript", "TypeScript"
+  ],
+  "Engineering": [
+    "Git", "GitHub", "CI/CD", "API Integration", "Debugging", "Deployment"
+  ]
 };

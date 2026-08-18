@@ -1,37 +1,46 @@
-import { skillsData } from "@/data/skills"
-import { Badge } from "@/components/ui/badge"
+"use client"
+
+import { skillsData, SkillCategory } from "@/data/skills"
+import { motion } from "framer-motion"
 
 export function Skills() {
-  const categories = [
-    { title: "Languages", skills: skillsData.languages },
-    { title: "Frontend", skills: skillsData.frontend },
-    { title: "Backend & Full-Stack", skills: skillsData.backend },
-    { title: "AI / Machine Learning / CV", skills: skillsData.ai },
-    { title: "Tools & Practices", skills: skillsData.tools },
-    { title: "APIs", skills: skillsData.apis },
-  ]
+  const categories = Object.keys(skillsData) as SkillCategory[]
 
   return (
-    <div className="space-y-12">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Technical Skills</h2>
-        <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-      </div>
+    <section id="skills" className="py-24 bg-background border-t border-border/50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-foreground">Technical Arsenal</h2>
+          <div className="h-1 w-20 bg-primary mt-4 rounded-full"></div>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {categories.map((category) => (
-          <div key={category.title} className="space-y-4">
-            <h3 className="text-lg font-semibold tracking-tight">{category.title}</h3>
-            <div className="flex flex-wrap gap-2">
-              {category.skills.map((skill) => (
-                <Badge key={skill} variant="secondary" className="px-3 py-1.5 font-mono text-sm">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categories.map((category, index) => (
+            <motion.div 
+              key={category}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="bg-card border border-border p-6 rounded-xl"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-4 pb-2 border-b border-border/50">
+                {category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {skillsData[category].map((skill) => (
+                  <span 
+                    key={skill}
+                    className="px-3 py-1.5 bg-secondary hover:bg-primary/10 hover:text-primary transition-colors text-sm font-medium text-secondary-foreground rounded-md border border-border cursor-default"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

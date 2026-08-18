@@ -1,7 +1,9 @@
 export const personalData = {
   name: "Adina Khalid",
-  title: "Software Engineer | Full-Stack Developer",
-  secondaryTitle: "MERN • AI/ML • Computer Vision",
+  title: "AI/ML Engineer",
+  secondaryTitle: "Computer Vision · Machine Learning · Full-Stack Development",
+  heroSubtitle: "Building intelligent systems, computer vision pipelines, and production-ready software.",
+  heroAvailability: "OPEN TO AI/ML & SOFTWARE ENGINEERING INTERNSHIPS",
   email: "adinakhalid99@gmail.com",
   phone: "0303-5031641",
   location: "Pakistan",
@@ -9,22 +11,22 @@ export const personalData = {
   github: "https://github.com/adina142",
   resumeUrl: "/resume/Adina-Khalid-Resume.pdf",
   about: {
-    p1: "I am a Computer Science student at Information Technology University with hands-on experience across full-stack development, AI/ML, computer vision, and data operations. I enjoy turning ideas into working software, from responsive web applications and backend APIs to machine learning and computer vision pipelines.",
-    p2: "My strongest development focus is full-stack web development using React, Node.js, Express, and MongoDB, while my AI/ML experience allows me to build intelligent features and data-driven applications."
+    p1: "I am a Computer Science student at Information Technology University with hands-on experience across machine learning, computer vision, and full-stack development. I build data-driven systems, from preprocessing and model training to deployment in responsive web applications.",
+    p2: "My strength lies in my ability to bridge the gap between AI research and production software. Whether I'm building a custom YOLOv8 object detection pipeline or engineering a robust MERN-stack backend, I focus on creating systems that solve real problems reliably."
   },
   education: {
-    degree: "Bachelor of Science in Computer Science",
-    university: "Information Technology University of Punjab",
-    period: "August 2023 – August 2027",
+    degree: "BS Computer Science",
+    university: "Information Technology University",
+    period: "2023–2027",
     specialization: "Information Technology",
-    focus: "Full-Stack + AI/ML",
+    focus: "AI/ML • Computer Vision • Full-Stack",
     areas: [
-      "Software Engineering",
       "Artificial Intelligence",
       "Machine Learning",
       "Computer Vision",
-      "Databases",
-      "Computer Systems"
+      "Software Engineering",
+      "Data Structures",
+      "Algorithms"
     ]
   },
   certifications: [

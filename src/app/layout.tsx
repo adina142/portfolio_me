@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { Navbar } from "@/components/Navbar"
@@ -10,23 +10,23 @@ const inter = Inter({
   subsets: ["latin"],
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-adina.vercel.app'),
-  title: "Adina | Software Engineer & AI/ML Developer",
-  description: "Adina Khalid is a Computer Science student and software developer specializing in full-stack development, MERN, AI/ML, and computer vision.",
-  keywords: ["Software Engineer", "Full-Stack Developer", "MERN", "AI/ML", "Computer Vision", "Adina Khalid"],
+  title: "Adina Khalid | AI/ML Engineer & Computer Vision Developer",
+  description: "Adina Khalid is a Computer Science student building machine learning, computer vision, and full-stack software systems.",
+  keywords: ["AI/ML Engineer", "Computer Vision", "Software Engineer", "Full-Stack Developer", "Python", "Adina Khalid"],
   authors: [{ name: "Adina Khalid" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adina-portfolio.com",
-    title: "Adina Khalid | Software Engineer & Full-Stack Developer",
-    description: "Adina Khalid is a Computer Science student and software developer specializing in full-stack development, MERN, AI/ML, and computer vision.",
+    url: "https://portfolio-adina.vercel.app",
+    title: "Adina Khalid | AI/ML Engineer & Computer Vision Developer",
+    description: "Adina Khalid is a Computer Science student building machine learning, computer vision, and full-stack software systems.",
     images: [
       {
         url: "/og-image.png",
@@ -45,8 +45,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-accent selection:text-accent-foreground min-h-screen flex flex-col dark`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          disableTransitionOnChange
+        >
           <Navbar />
           <main className="flex-1">
             {children}
